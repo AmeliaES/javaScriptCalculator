@@ -1,0 +1,139 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    width: 320px;
+    max-width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calc-text {
+    grid-column: span 4;
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    text-align: right;
+    font-size: 2em;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+/* Operator buttons */
+.operator-keys {
+    grid-column: span 4;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.operator {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.operator:hover {
+    background-color: #ddd;
+}
+
+.operator:active {
+    background-color: #bbb;
+}
+
+/* Number buttons */
+.number-keys {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for numbers */
+    grid-gap: 10px;
+}
+
+.numbers, .zero, .decimal, .clear {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+}
+
+.numbers:hover, .zero:hover, .decimal:hover, .clear:hover {
+    background-color: #ddd;
+}
+
+.numbers:active, .zero:active, .decimal:active, .clear:active {
+    background-color: #bbb;
+}
+
+/* Clear and Equals buttons */
+.clear {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.clear:hover {
+    background-color: #f5c6cb;
+}
+
+.clear:active {
+    background-color: #f1b0b7;
+}
+
+.equal-key {
+    display: grid;
+    grid-column: span 1;  
+    grid-gap: 10px;
+}
+
+.equals {
+    grid-row: span 4;  
+    background-color: #a8d1a1;
+    border: 1px solid #ccc;
+    padding: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.equals:hover {
+    background-color: #218838;
+}
+
+.equals:active {
+    background-color: #1e7e34;
+}
+
+/* Ensures uniform button size */
+button {
+    height: 60px;
+    font-family: inherit;
+    border-radius: 5px;
+    border: none;
+    box-sizing: border-box;
+}
+
+button:focus {
+    outline: none;
+}
