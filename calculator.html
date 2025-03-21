@@ -46,70 +46,40 @@
         </div> 
 
         <script>
-            // Create a simple calculator in js
-
-            // Different things that can happen:
-            // 1. User clicks on a number
-            // 2. User clicks on an operator
-            // 3. User clicks on equals
-            // 4. User clicks on clear
-            // 5. User clicks on decimal
-
-            // When user clicks on a number, add that number to the answer
-            // Answer starts at 0
-            // When user clicks on an operator, add that operator to the answer
-            // When user clicks on equals, evaluate the answer
-            // When user clicks on clear, clear the answer
-            // When user clicks on decimal, add a decimal to the answer
-
             document.addEventListener("DOMContentLoaded", () => {
                 const display = document.getElementById("answer"); // Select the display
                 const buttons = document.querySelectorAll("button");
+
+                // Define sets for operators, numbers, and special keys
                 const operators = new Set(['+', '-', '*', '/']);
                 const numbers = new Set(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']);
-
-                // Variable to keep track of the current input
-                let currentInput = '';
+                const decimal = new Set(['.']);
+                const clear = new Set(['C']);
+                const equals = new Set(['=']);
+                
+                // Variable to keep track of the current and previous input
+                const inputField = {
+                    display: display.textContent,
+                    stringToEval: null,
+                    currentValue: null,
+                    previousValue: null,
+                };
 
                 buttons.forEach(button => {
                     button.addEventListener("click", () => {
-                        let value = button.textContent;
+                        // Update currentValue with the button clicked
+                        inputField.currentValue = button.textContent;
 
-                        // If the user clicked "C", clear the display
-                        if (value === "C") {
-                            currentInput = "";
-                            display.textContent = "0";
-                        }
 
-                        // If the user clicked "=", evaluate the expression
-                        else if (value === "=") {
-                            try {
-                                currentInput = eval(currentInput).toString(); // Evaluate and update input
-                                display.textContent = currentInput;
-                            } catch (e) {
-                                display.textContent = "Error"; // Show error if eval fails
-                                currentInput = "";
-                            }
-                        }
 
-                        // If the user clicked an operator or number, append to the current input
-                        else {
-                            // Prevent multiple decimal points in the same number
-                            if (value === "." && currentInput.includes(".")) {
-                                return;
-                            }
-                            
-                            // If the input is empty or the previous value was an operator, allow the operator to be entered
-                            if (currentInput === "" && operators.has(value)) {
-                                return;
-                            }
 
-                            // Add the value to current input
-                            currentInput += value;
-                            display.textContent = currentInput;
 
-                        }
+                    
+                        // Update previousValue ready for next button click
+                        inputField.previousValue = inputField.currentValue;
                         
+                        // Update the display
+                        display.textContent = inputField.display;
                     });
                 });
             });
