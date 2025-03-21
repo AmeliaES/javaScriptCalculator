@@ -93,9 +93,10 @@
                                 inputField.stringToEval += inputField.currentValue;
 
                             // Append number to string to make a multi digit number
-                            } else if (numbers.has(inputField.previousValue)) {
+                            } else if (numbers.has(inputField.previousValue) || decimal.has(inputField.previousValue)) {
                                 // Append the number clicked to the display
                                 inputField.display += inputField.currentValue;
+                                inputField.stringToEval += inputField.currentValue;
                             }
                         } else if(operators.has(inputField.currentValue)) {
                             // - **Operators**: if a user clicks on an operator:
@@ -116,6 +117,12 @@
                             //     - append a decimal to string
                             //     - but only if the previous value is a number
                             //     - and not if there is already a decimal in the string
+                            if( (numbers.has(inputField.previousValue) || equals.has(inputField.previousValue)) && !inputField.display.includes('.')) {
+                                // Append the decimal to the display
+                                inputField.display += inputField.currentValue;
+                                // Append the decimal to the string to evaluate
+                                inputField.stringToEval += inputField.currentValue;
+                            }
 
                         } else if(clear.has(inputField.currentValue)) {
                             // - **Clear**: if a user clicks on clear:
@@ -144,7 +151,7 @@
                         display.textContent = inputField.display;
 
                         // Print to console for debugging
-                        console.log(`Before button logic: ${JSON.stringify(inputField)}`);
+                        console.log(`After button logic: ${JSON.stringify(inputField)}`);
                     });
                 });
             });
