@@ -75,11 +75,53 @@
                         //      - replace that number, ie. after clicking an opertator or equals button
                         //      - replace that number, if the only number in the display is zero
                         if(numbers.has(inputField.currentValue)) {
-                            if(inputField.display === '0' || operators.has(inputField.previousValue) || equals.has(inputField.previousValue)) {
+                            // Starting a new calculation
+                            if(inputField.display === '0' || equals.has(inputField.previousValue)) {
+                                // Update display with the number clicked
                                 inputField.display = inputField.currentValue;
-                            } else {
+                                // Update the string to evaluate
+                                inputField.stringToEval = inputField.currentValue;
+
+                            // Appending a number to a current calculation, when previous button is an operator
+                            } else if (operators.has(inputField.previousValue)) {
+                                // Update the display with current number
+                                inputField.display = inputField.currentValue;
+                                // Update the string to evaluate
+                                inputField.stringToEval += inputField.currentValue;
+
+                            // Append number to string to make a multi digit number
+                            } else if (numbers.has(inputField.previousValue)) {
+                                // Append the number clicked to the display
                                 inputField.display += inputField.currentValue;
                             }
+                        } else if(operators.has(inputField.currentValue)) {
+                            // - **Operators**: if a user clicks on an operator:
+                            //      - append that operator to the string to evaluate only when the previous value is a number (not a decimal)
+                            //      - however the display should not change, the previous number should stay the same at this point
+                            //      - if the user clicks on the operator multiple times, ie ++++_*/ one after another then replace the last character (an operator character) with the operator that was last clicked.
+
+                            if(operators.has(inputField.previousValue)) {
+                                // Replace the last operator with the current operator
+                                inputField.stringToEval = inputField.stringToEval.slice(0, -1) + inputField.currentValue;
+                            } else if(numbers.has(inputField.previousValue)) {
+                                // Append the operator to the string to evaluate
+                                inputField.stringToEval += inputField.currentValue;
+                            }
+
+                        } else if(decimal.has(inputField.currentValue)) {
+                            // - **Decimal**: if a user clicks on decimal:
+                            //     - append a decimal to string
+                            //     - but only if the previous value is a number
+                            //     - and not if there is already a decimal in the string
+
+                        } else if(clear.has(inputField.currentValue)) {
+                            // - **Clear**: if a user clicks on clear:
+                            //     - replace the display with "0"
+                            
+                        } else if(equals.has(inputField.currentValue)) {
+                            // - **Equals**: if a user clicks on equals:
+                            //     - evalulate that string
+                            //     - but only evaluate if the last character is a number, it cannot be a "." or an operator character.
                         }
                     
                         // Update previousValue ready for next button click
