@@ -10,7 +10,7 @@
     <body>
         <div class="calculator">
             <div class="calc-text">
-                <p id="answer">0</p>
+                <p id="answer"> </p>
             </div>
 
             <div class="operator-keys">
@@ -70,13 +70,16 @@
                         // Update currentValue with the button clicked
                         inputField.currentValue = button.textContent;
 
+                        // Print to console for debugging
+                        console.log(`Before button logic: ${JSON.stringify(inputField)}`);
+
                         // - **Numbers**: if a user clicks on a number then there are some options depending on a few things:
                         //      - append that digit to the current display, ie. for making a number with multiple digits
                         //      - replace that number, ie. after clicking an opertator or equals button
                         //      - replace that number, if the only number in the display is zero
                         if(numbers.has(inputField.currentValue)) {
                             // Starting a new calculation
-                            if(inputField.display === '0' || equals.has(inputField.previousValue)) {
+                            if(inputField.display === ' ' || equals.has(inputField.previousValue)) {
                                 // Update display with the number clicked
                                 inputField.display = inputField.currentValue;
                                 // Update the string to evaluate
@@ -103,7 +106,7 @@
                             if(operators.has(inputField.previousValue)) {
                                 // Replace the last operator with the current operator
                                 inputField.stringToEval = inputField.stringToEval.slice(0, -1) + inputField.currentValue;
-                            } else if(numbers.has(inputField.previousValue)) {
+                            } else if(numbers.has(inputField.previousValue) || equals.has(inputField.previousValue)) {
                                 // Append the operator to the string to evaluate
                                 inputField.stringToEval += inputField.currentValue;
                             }
@@ -117,11 +120,18 @@
                         } else if(clear.has(inputField.currentValue)) {
                             // - **Clear**: if a user clicks on clear:
                             //     - replace the display with "0"
-                            
+
                         } else if(equals.has(inputField.currentValue)) {
                             // - **Equals**: if a user clicks on equals:
                             //     - evalulate that string
                             //     - but only evaluate if the last character is a number, it cannot be a "." or an operator character.
+                            //     - replace the display with the result of the evaluation
+                            if (numbers.has(inputField.previousValue)) {
+                                // Evaluate the string
+                                inputField.display = eval(inputField.stringToEval).toString();
+                                // Update the string to evaluate
+                                inputField.stringToEval = inputField.display;
+                            }
                         }
                     
                         // Update previousValue ready for next button click
@@ -129,6 +139,9 @@
                         
                         // Update the display
                         display.textContent = inputField.display;
+
+                        // Print to console for debugging
+                        console.log(`Before button logic: ${JSON.stringify(inputField)}`);
                     });
                 });
             });
