@@ -70,10 +70,17 @@
                         // Update currentValue with the button clicked
                         inputField.currentValue = button.textContent;
 
-
-
-
-
+                        // - **Numbers**: if a user clicks on a number then there are some options depending on a few things:
+                        //      - append that digit to the current display, ie. for making a number with multiple digits
+                        //      - replace that number, ie. after clicking an opertator or equals button
+                        //      - replace that number, if the only number in the display is zero
+                        if(numbers.has(inputField.currentValue)) {
+                            if(inputField.display === '0' || operators.has(inputField.previousValue) || equals.has(inputField.previousValue)) {
+                                inputField.display = inputField.currentValue;
+                            } else {
+                                inputField.display += inputField.currentValue;
+                            }
+                        }
                     
                         // Update previousValue ready for next button click
                         inputField.previousValue = inputField.currentValue;
