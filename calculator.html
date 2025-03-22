@@ -137,10 +137,18 @@
                             //     - but only evaluate if the last character is a number, it cannot be a "." or an operator character.
                             //     - replace the display with the result of the evaluation
                             if (numbers.has(inputField.previousValue)) {
-                                // Evaluate the string
-                                inputField.display = eval(inputField.stringToEval).toString();
-                                // Update the string to evaluate
-                                inputField.stringToEval = inputField.display;
+                                // Check for division by zero
+                                if (inputField.stringToEval.includes('/0')) {
+                                    inputField.display = 'Undefined';
+                                    // Update the string to evaluate
+                                    inputField.stringToEval = null;
+                                } else {
+                                    // Evaluate the string
+                                    inputField.display = eval(inputField.stringToEval).toString();
+                                    // Update the string to evaluate
+                                    inputField.stringToEval = inputField.display;
+                                }
+
                             }
                         }
                     
