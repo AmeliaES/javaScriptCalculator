@@ -1,0 +1,13 @@
+# Cypress
+cypress/fixtures/
+cypress/support/
+
+# Cypress installation folder
+node_modules/
+
+# OS-specific files
+*.DS_Store
+
+# Cypress environment config (optional)
+cypress.env.json
+package*.json
