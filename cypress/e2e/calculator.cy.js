@@ -88,4 +88,15 @@ describe('using calculator', () => {
       .should('match', /^\s*$/ ); // in order to make this test not too constrained, match against any white space or empty string
   });
 
+  it('if a user clicks on an operator multiple times in a row, the last operator should be the one that is used', () => {
+    cy.get('[data-cy="6"]').click();
+    cy.get('[data-cy="add"]').click();
+    cy.get('[data-cy="minus"]').click();
+    cy.get('[data-cy="multiply"]').click();
+    cy.get('[data-cy="divide"]').click();
+    cy.get('[data-cy="2"]').click();
+    cy.get('[data-cy="equals"]').click();
+    cy.get('[data-cy="answer"]').should('have.text', '3');
+  });
+
 })
