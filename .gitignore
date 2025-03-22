@@ -9,5 +9,5 @@ node_modules/
 *.DS_Store
 
 # Cypress environment config (optional)
-cypress.env.json
+cypress.config.js
 package*.json
