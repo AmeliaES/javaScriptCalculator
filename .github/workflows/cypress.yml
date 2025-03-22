@@ -11,7 +11,9 @@ jobs:
         
       # Install dependencies
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm install
+          npm install --save-dev http-server
 
       # Start the server and serve the HTML file
       - name: Start http-server
