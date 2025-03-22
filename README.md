@@ -36,4 +36,43 @@ We have the following buttons on our calculator:
 
 ## How do we code this logic?
 
-There's a few things we need to keep track of here. We need to keep track of the previous button pressed before the current pressed value.
+We need to keep track of the previous button pressed before the current pressed value.
+
+## Testing
+
+Use cypress for E2E testing:
+```
+npm init -y
+npm install cypress --save-dev
+# open Cypress.io test runner
+node_modules/.bin/cypress open
+```
+
+### Logic of what to test:
+
+Let's test the most likely thing a user would do, ie. the most used paths.
+- Click on a number button, click on an operator button, click on another number button, click on equals. This displays the result.
+- In each of those steps we need to make sure the number is displayed when a user clicks on a new number button.
+- We can't test every possible calculation with every single number key. But we could check that every number button contains the number it should, and same for the other button types.
+- Then we can do some calculations on some of the number keys.
+
+#### Edge cases
+
+- Negative numbers, can the user click on "-" and then a number to create a negative number?
+- Dividing by 0
+
+
+
+### Things i learnt:
+
+- Writing out test cases and leaving them empty shows them as tests that have passed. 
+eg. when writing the following, and leaving them empty like this, they show as passed tests, even though we have not written the test logic yet. Therefore I'm going to comment out any tests I haven't written yet, until I find out what the best practice is.
+```
+  it('checks numeric buttons contain the correct numbers', () => {
+
+  })
+
+  it('checks the operator buttons contain the correct operators', () => {
+    
+  })
+```
