@@ -64,6 +64,10 @@ Let's test the most likely thing a user would do, ie. the most used paths.
 - What happens if a user clicks on an operator multiple times in a row
 - if a user clicks on equals multiple times in a row
 - that the decimal point only occurs once in a number
+- Number buttons and updating display:
+    - eg. when a user clicks on a number either that number is appended to the string or if an operator button was last pressed then that number is displayed on its own.
+    - number button should replace what's on the screen
+    - replace whats on the screen if previous button was an empty space ie. clear display or the last button was equals
 
 ### Things i learnt:
 

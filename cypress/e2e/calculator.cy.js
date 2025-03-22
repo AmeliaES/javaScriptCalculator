@@ -107,4 +107,40 @@ describe('using calculator', () => {
     cy.get('[data-cy="answer"]').should('have.text', 'Undefined');
   });
 
+  // Number button options and updating display:
+  it('if user clicks on a number and previous button was a number, the number should be appended to the string', () => {
+    cy.get('[data-cy="1"]').click();
+    cy.get('[data-cy="2"]').click();
+    cy.get('[data-cy="3"]').click();
+    cy.get('[data-cy="4"]').click();
+    cy.get('[data-cy="5"]').click();
+    cy.get('[data-cy="answer"]').should('have.text', '12345');
+  });
+
+  it('if user clicks on an operator and previous button was a number, the previous number should be displayed', () => {
+    cy.get('[data-cy="6"]').click();
+    cy.get('[data-cy="add"]').click();
+    cy.get('[data-cy="answer"]').should('have.text', '6');
+  });
+
+  it('if user clicks on a number and previous button was an operator, the number should be displayed', () => {
+    cy.get('[data-cy="7"]').click();
+    cy.get('[data-cy="add"]').click();
+    cy.get('[data-cy="8"]').click();
+    cy.get('[data-cy="answer"]').should('have.text', '8');
+  });
+
+  it('if user clicks on a number and previous button was an equals, the number should be displayed', () => {
+    cy.get('[data-cy="9"]').click();
+    cy.get('[data-cy="equals"]').click();
+    cy.get('[data-cy="8"]').click();
+    cy.get('[data-cy="answer"]').should('have.text', '8');
+  });
+
+  it('if the display is clear, and a number button is clicked, the number should be displayed', () => {
+    cy.get('[data-cy="clear"]').click();
+    cy.get('[data-cy="1"]').click();
+    cy.get('[data-cy="answer"]').should('have.text', '1');
+  });
+
 })
