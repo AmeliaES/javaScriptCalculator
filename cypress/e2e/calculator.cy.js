@@ -99,4 +99,12 @@ describe('using calculator', () => {
     cy.get('[data-cy="answer"]').should('have.text', '3');
   });
 
+  it('if a number is divided by zero, the display should show "Undefined"', () => {
+    cy.get('[data-cy="8"]').click();
+    cy.get('[data-cy="divide"]').click();
+    cy.get('[data-cy="0"]').click();
+    cy.get('[data-cy="equals"]').click();
+    cy.get('[data-cy="answer"]').should('have.text', 'Undefined');
+  });
+
 })
