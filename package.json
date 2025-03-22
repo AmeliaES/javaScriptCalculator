@@ -1,0 +1,15 @@
+{
+  "name": "javascriptcalculator",
+  "version": "1.0.0",
+  "description": "## Define what buttons the user can click on and what each button does",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^14.2.0"
+  }
+}

@@ -8,6 +8,3 @@ node_modules/
 # OS-specific files
 *.DS_Store
 
-# Cypress environment config (optional)
-cypress.config.js
-package*.json
