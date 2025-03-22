@@ -80,4 +80,12 @@ describe('using calculator', () => {
     cy.get('[data-cy="answer"]').should('have.text', '1.');
   });
 
+  it('should clear the display if C is clicked', () => {
+    cy.get('[data-cy="1"]').click();
+    cy.get('[data-cy="clear"]').click();
+    cy.get('[data-cy="answer"]')
+      .invoke('text')
+      .should('match', /^\s*$/ ); // in order to make this test not too constrained, match against any white space or empty string
+  });
+
 })
