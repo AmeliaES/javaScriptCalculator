@@ -1,3 +1,4 @@
+[![Cypress Tests](https://github.com/AmeliaES/javaScriptCalculator/actions/workflows/cypress.yml/badge.svg)](https://github.com/AmeliaES/javaScriptCalculator/actions/workflows/cypress.yml) 
 # Create a simple calculator in JavaScript
 
 ## Define what buttons the user can click on and what each button does
