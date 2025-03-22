@@ -18,12 +18,11 @@ jobs:
       # Start the server and serve the HTML file
       - name: Start http-server
         run: |
-          nohup http-server -p 3000 . &
-          sleep 5 # Give the server some time to start
-
-      # and run all Cypress tests
-      - name: Cypress run
+          nohup npx http-server ./calculator.html -p 3000 &
+        
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-          config: pageLoadTimeout=100000,baseUrl=http://localhost:3000
+          start: npm start
+          config: baseUrl=http://localhost:3000
