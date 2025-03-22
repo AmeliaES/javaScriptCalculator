@@ -1,7 +1,3 @@
-# Cypress
-cypress/fixtures/
-cypress/support/
-
 # Cypress installation folder
 node_modules/
 
