@@ -55,13 +55,15 @@ Let's test the most likely thing a user would do, ie. the most used paths.
 - In each of those steps we need to make sure the number is displayed when a user clicks on a new number button.
 - We can't test every possible calculation with every single number key. But we could check that every number button contains the number it should, and same for the other button types.
 - Then we can do some calculations on some of the number keys.
+- We should also check the decimal and clear buttons behave as expected.
 
 #### Edge cases
 
 - Negative numbers, can the user click on "-" and then a number to create a negative number?
 - Dividing by 0
-
-
+- What happens if a user clicks on an operator multiple times in a row
+- if a user clicks on equals multiple times in a row
+- that the decimal point only occurs once in a number
 
 ### Things i learnt:
 
