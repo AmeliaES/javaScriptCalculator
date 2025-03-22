@@ -71,6 +71,13 @@ describe('using calculator', () => {
     cy.get('[data-cy="2"]').click();
     cy.get('[data-cy="equals"]').click();
     cy.get('[data-cy="answer"]').should('have.text', '4');
-  })
+  });
+
+  it('should not allow multiple decimal points in a single number', () => {
+    cy.get('[data-cy="1"]').click();
+    cy.get('[data-cy="decimal"]').click();
+    cy.get('[data-cy="decimal"]').click();
+    cy.get('[data-cy="answer"]').should('have.text', '1.');
+  });
 
 })
