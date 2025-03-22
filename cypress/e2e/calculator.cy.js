@@ -1,6 +1,6 @@
 describe('using calculator', () => {
   beforeEach(() => {
-    cy.visit('http://127.0.0.1:5500/calculator.html');
+    cy.visit('/calculator.html'); // using baseURL in cypress.config.js
   });
 
   it('should load the calculator', () => {
