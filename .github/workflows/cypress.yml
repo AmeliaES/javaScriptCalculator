@@ -18,7 +18,7 @@ jobs:
       # Start the server and serve the HTML file
       - name: Start http-server
         run: |
-          nohup npx http-server ./calculator.html -p 3000 &
+          nohup npx http-server -p 3000 &
         
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
