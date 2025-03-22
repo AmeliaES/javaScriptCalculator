@@ -15,7 +15,7 @@ jobs:
 
       # Install http-server to serve the HTML files
       - name: Install http-server
-        run: npm install -g http-server
+        run: npm install --save-dev http-server
 
       # Start the server and serve the HTML file
       - name: Start http-server
